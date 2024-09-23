@@ -45,9 +45,9 @@ public class App {
             if ((startingUnit.equalsIgnoreCase("kilometers"))||(startingUnit.equalsIgnoreCase("miles"))||
                 (startingUnit.equalsIgnoreCase("kilometer"))||(startingUnit.equalsIgnoreCase("mile"))){
                 if (startingUnit.equalsIgnoreCase("kilometers")||startingUnit.equalsIgnoreCase("kilometer")){
-                    commonConversion = (unit * 1000 ) / meterToFeet;
+                    commonConversion = (unit * 1000 ) * meterToFeet;
                 } else if (startingUnit.equalsIgnoreCase("miles")||startingUnit.equalsIgnoreCase("mile")){
-                    commonConversion = unit / 5280;
+                    commonConversion = unit * 5280;
                 }
             } else if ((startingUnit.equalsIgnoreCase("meters"))||(startingUnit.equalsIgnoreCase("centimeters"))||
             (startingUnit.equalsIgnoreCase("yards"))||(startingUnit.equalsIgnoreCase("feet"))||
@@ -55,15 +55,15 @@ public class App {
             (startingUnit.equalsIgnoreCase("meter"))||(startingUnit.equalsIgnoreCase("centimeter"))||
             (startingUnit.equalsIgnoreCase("yard"))||(startingUnit.equalsIgnoreCase("inch"))){
                 if (startingUnit.equalsIgnoreCase("meters")||startingUnit.equalsIgnoreCase("meter")){
-                    commonConversion = unit / meterToFeet;
+                    commonConversion = unit * meterToFeet;
                 } else if (startingUnit.equalsIgnoreCase("centimeters")||startingUnit.equalsIgnoreCase("centimeter")){
-                    commonConversion = (unit * 100) / meterToFeet;
+                    commonConversion = (unit / 100) * meterToFeet;
                 } else if (startingUnit.equalsIgnoreCase("yards")||startingUnit.equalsIgnoreCase("yard")){
-                    commonConversion = unit / 3;
+                    commonConversion = unit * 3;
                 } else if (startingUnit.equalsIgnoreCase("feet")){
                     commonConversion = unit;
                 } else if (startingUnit.equalsIgnoreCase("inches")||startingUnit.equalsIgnoreCase("inch")){
-                    commonConversion = unit * 12;
+                    commonConversion = unit / 12;
                 }
             } else if ((startingUnit.equalsIgnoreCase("kelvin"))||(startingUnit.equalsIgnoreCase("celsius"))||
             (startingUnit.equalsIgnoreCase("fahrenheit"))){
@@ -79,15 +79,14 @@ public class App {
                 continue;
             }
 
-
             //Convert from common factor to desired ending unit
             if ((endingUnit.equalsIgnoreCase("kilometers"))||(endingUnit.equalsIgnoreCase("miles"))||
                 (endingUnit.equalsIgnoreCase("kilometer"))||(endingUnit.equalsIgnoreCase("mile"))){
                 if (endingUnit.equalsIgnoreCase("kilometers")||endingUnit.equalsIgnoreCase("kilometer")){
-                    continuedUnit = (commonConversion / 1000) * meterToFeet;
+                    continuedUnit = (commonConversion / 1000) / meterToFeet;
                     System.out.println(continuedUnit + " kilometers");
                 } else if (endingUnit.equalsIgnoreCase("miles")||endingUnit.equalsIgnoreCase("mile")){
-                    continuedUnit = commonConversion * 5280;
+                    continuedUnit = commonConversion / 5280;
                     System.out.println(continuedUnit + " miles");
                 }
             } else if ((endingUnit.equalsIgnoreCase("meters"))||(endingUnit.equalsIgnoreCase("centimeters"))||
@@ -97,19 +96,19 @@ public class App {
             (endingUnit.equalsIgnoreCase("yard"))||
             (endingUnit.equalsIgnoreCase("inch"))){
                 if (endingUnit.equalsIgnoreCase("meters")||endingUnit.equalsIgnoreCase("meter")){
-                    continuedUnit = commonConversion * meterToFeet;
+                    continuedUnit = commonConversion / meterToFeet;
                     System.out.println(continuedUnit + " meters");
                 } else if (endingUnit.equalsIgnoreCase("centimeters")||endingUnit.equalsIgnoreCase("centimeter")){
-                    continuedUnit = (commonConversion * meterToFeet) / 100;
+                    continuedUnit = (commonConversion / meterToFeet) * 100;
                     System.out.println(continuedUnit + " centimeters");
                 } else if (endingUnit.equalsIgnoreCase("yards")||endingUnit.equalsIgnoreCase("yard")){
-                    continuedUnit = commonConversion * 3;
+                    continuedUnit = commonConversion / 3;
                     System.out.println(continuedUnit + " yards");
                 } else if (endingUnit.equalsIgnoreCase("feet")){
                     continuedUnit = commonConversion;
                     System.out.println(continuedUnit + " feet");
                 } else if (endingUnit.equalsIgnoreCase("inches")||endingUnit.equalsIgnoreCase("inch")){
-                    continuedUnit = commonConversion / 12;
+                    continuedUnit = commonConversion * 12;
                     System.out.println(continuedUnit + " inches");
                 }
             
@@ -128,7 +127,6 @@ public class App {
                 System.out.println("Invalid ending input, please try again.\n");
                 continue;
             }
-
         }
         System.out.println("done! Goodbye! :)");
         scanner.close();
